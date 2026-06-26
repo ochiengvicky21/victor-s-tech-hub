@@ -1,33 +1,16 @@
-import logoAsset from "@/assets/voo-logo.png";
 import { Link } from "@tanstack/react-router";
 
-export function Logo({ size = 36 }: { size?: number }) {
+export function Logo() {
   return (
-    <Link to="/" className="group flex items-center gap-3">
-      <span
-        className="relative inline-flex shrink-0 items-center justify-center"
-        style={{ width: size, height: size }}
-      >
-        <span
-          aria-hidden
-          className="absolute inset-0 rounded-full blur-md opacity-60 group-hover:opacity-90 transition-opacity"
-          style={{ background: "var(--gradient-aurora)" }}
-        />
-        <img
-          src={logoAsset}
-          width={size}
-          height={size}
-          alt="VOO — Ochieng Victor Otieno logo"
-          className="relative drop-shadow-[0_0_8px_oklch(0.72_0.22_255_/_0.6)]"
-        />
+    <Link to="/" className="group flex items-center gap-2.5">
+      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-ink text-paper">
+        <span className="absolute inset-0 bg-gradient-to-br from-[oklch(0.3_0.05_256)] to-ink" />
+        <span className="relative font-serif text-[15px] leading-none italic">vo</span>
+        <span className="absolute right-1.5 top-1.5 h-1 w-1 rounded-full bg-[oklch(0.7_0.18_200)]" />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-          voo //
-        </span>
-        <span className="font-display text-sm font-semibold text-foreground">
-          Ochieng Victor
-        </span>
+        <span className="font-serif text-[15px] tracking-tight text-ink">Victor Otieno</span>
+        <span className="eyebrow mt-0.5 text-[9px]">Ochieng · engineer</span>
       </span>
     </Link>
   );

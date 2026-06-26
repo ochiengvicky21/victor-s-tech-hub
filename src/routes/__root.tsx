@@ -14,20 +14,17 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
+const FAVICON = "/favicon-voo-v3.png";
+
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="glass-strong max-w-md rounded-3xl p-10 text-center">
-        <h1 className="text-7xl font-bold text-gradient">404</h1>
-        <h2 className="mt-4 text-xl font-semibold">Signal lost</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          That route isn't on the grid. Let's get you back online.
-        </p>
+    <div className="flex min-h-[70vh] items-center justify-center px-4">
+      <div className="max-w-md rounded-2xl border border-rule bg-white p-10 text-center shadow-sm">
+        <p className="eyebrow">404 · signal lost</p>
+        <h1 className="mt-3 serif-display text-6xl">Off the grid</h1>
+        <p className="mt-3 text-sm ink-soft">That route isn&apos;t here. Let&apos;s get you back.</p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-xl bg-electric px-4 py-2 text-sm font-medium text-primary-foreground shadow-[var(--shadow-glow-sm)]"
-          >
+          <Link to="/" className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:opacity-90">
             Return home
           </Link>
         </div>
@@ -44,20 +41,19 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="glass-strong max-w-md rounded-3xl p-10 text-center">
-        <h1 className="text-xl font-semibold">Something shorted out</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Refresh to reroute power, or head home.
-        </p>
+    <div className="flex min-h-[70vh] items-center justify-center px-4">
+      <div className="max-w-md rounded-2xl border border-rule bg-white p-10 text-center shadow-sm">
+        <p className="eyebrow">system · interrupted</p>
+        <h1 className="mt-3 serif-display text-4xl">Something shorted out</h1>
+        <p className="mt-3 text-sm ink-soft">Refresh to reroute, or head home.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => { router.invalidate(); reset(); }}
-            className="inline-flex items-center justify-center rounded-xl bg-electric px-4 py-2 text-sm font-medium text-primary-foreground"
+            className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:opacity-90"
           >
             Try again
           </button>
-          <a href="/" className="glass inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium">
+          <a href="/" className="rounded-full border border-rule px-5 py-2.5 text-sm font-medium hover:bg-surface">
             Go home
           </a>
         </div>
@@ -71,22 +67,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ochieng Victor Otieno — Developer Portfolio" },
-      { name: "description", content: "Portfolio of Ochieng Victor Otieno — software developer building electric, modern web experiences. Live GitHub projects, contact, and social." },
-      { name: "author", content: "Ochieng Victor Otieno" },
-      { name: "theme-color", content: "#0b0f1f" },
-      { property: "og:title", content: "Ochieng Victor Otieno — Developer Portfolio" },
-      { property: "og:description", content: "Software developer. Live GitHub projects, contact, and social." },
+      { title: "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect" },
+      { name: "description", content: "Victor Otieno Ochieng — full stack engineer, AI systems builder and SaaS architect. Designing scalable digital systems for ambitious businesses across Africa and beyond." },
+      { name: "author", content: "Victor Otieno Ochieng" },
+      { name: "theme-color", content: "#fafbfc" },
+      { property: "og:title", content: "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect" },
+      { property: "og:description", content: "Designing scalable digital systems for ambitious businesses." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Victor Otieno Ochieng" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/favicon-photo-v2.png" },
-      { rel: "apple-touch-icon", href: "/favicon-photo-v2.png" },
+      { rel: "icon", type: "image/png", href: FAVICON },
+      { rel: "shortcut icon", type: "image/png", href: FAVICON },
+      { rel: "apple-touch-icon", href: FAVICON },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -113,7 +111,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen pt-6">
+      <div className="relative min-h-screen pt-5">
         <Navbar />
         <main className="relative z-10">
           <Outlet />

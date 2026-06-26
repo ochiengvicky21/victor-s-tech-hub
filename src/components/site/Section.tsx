@@ -5,30 +5,37 @@ export function Section({
   eyebrow,
   title,
   description,
+  align = "left",
+  bordered = false,
   children,
+  className = "",
 }: {
   id?: string;
   eyebrow?: string;
-  title?: string;
-  description?: string;
+  title?: ReactNode;
+  description?: ReactNode;
+  align?: "left" | "center";
+  bordered?: boolean;
   children: ReactNode;
+  className?: string;
 }) {
   return (
-    <section id={id} className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:py-20">
+    <section
+      id={id}
+      className={`relative mx-auto w-full max-w-6xl px-5 py-20 sm:py-28 ${bordered ? "rule-t" : ""} ${className}`}
+    >
       {(eyebrow || title || description) && (
-        <div className="mb-10 max-w-2xl">
-          {eyebrow && (
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-              {eyebrow}
-            </p>
-          )}
+        <div className={`mb-12 max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
           {title && (
-            <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
-              <span className="text-gradient">{title}</span>
+            <h2 className="mt-4 serif-display text-4xl sm:text-5xl md:text-6xl">
+              {title}
             </h2>
           )}
           {description && (
-            <p className="mt-3 text-base text-muted-foreground">{description}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed ink-soft sm:text-lg">
+              {description}
+            </p>
           )}
         </div>
       )}

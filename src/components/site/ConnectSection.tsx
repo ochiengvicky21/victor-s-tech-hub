@@ -1,4 +1,4 @@
-import { Github, Mail, MessageCircle, Phone, Facebook, ExternalLink } from "lucide-react";
+import { Github, Mail, MessageCircle, Phone, Facebook, ArrowUpRight } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { Section } from "./Section";
 
@@ -10,66 +10,57 @@ function TikTokIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-type SocialCard = {
-  href: string;
-  label: string;
-  handle: string;
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
-  tint: string; // tailwind text color class
-};
+type Card = { href: string; label: string; handle: string; icon: ComponentType<SVGProps<SVGSVGElement>> };
 
-const personal: SocialCard[] = [
-  { href: "https://www.tiktok.com/@v_o_otoday", label: "TikTok", handle: "@v_o_otoday", icon: TikTokIcon, tint: "text-pink-400" },
-  { href: "https://github.com/ochiengvicky21", label: "GitHub", handle: "@ochiengvicky21", icon: Github, tint: "text-foreground" },
-  { href: "https://wa.me/254742676542", label: "WhatsApp", handle: "+254 742 676 542", icon: MessageCircle, tint: "text-green-400" },
-  { href: "tel:+254742676542", label: "Phone", handle: "+254 742 676 542", icon: Phone, tint: "text-accent" },
-  { href: "mailto:ochiengvicky21@gmail.com", label: "Email", handle: "ochiengvicky21@gmail.com", icon: Mail, tint: "text-cyan-300" },
+const personal: Card[] = [
+  { href: "https://www.tiktok.com/@v_o_otoday", label: "TikTok", handle: "@v_o_otoday", icon: TikTokIcon },
+  { href: "https://github.com/ochiengvicky21", label: "GitHub", handle: "@ochiengvicky21", icon: Github },
+  { href: "https://wa.me/254742676542", label: "WhatsApp", handle: "+254 742 676 542", icon: MessageCircle },
+  { href: "tel:+254742676542", label: "Phone", handle: "+254 742 676 542", icon: Phone },
+  { href: "mailto:ochiengvicky21@gmail.com", label: "Email", handle: "ochiengvicky21@gmail.com", icon: Mail },
 ];
 
-const managed: SocialCard[] = [
-  { href: "https://www.facebook.com/MungluEcoVillageResort", label: "Munglu Eco Village · Facebook", handle: "MungluEcoVillageResort", icon: Facebook, tint: "text-blue-400" },
-  { href: "https://www.tiktok.com/@mungluecovillage", label: "Munglu Eco Village · TikTok", handle: "@mungluecovillage", icon: TikTokIcon, tint: "text-pink-400" },
-  { href: "https://www.mungluecovillage.co.ke", label: "Munglu Eco Village · Website", handle: "mungluecovillage.co.ke", icon: ExternalLink, tint: "text-accent" },
+const managed: Card[] = [
+  { href: "https://www.facebook.com/MungluEcoVillageResort", label: "Munglu · Facebook", handle: "MungluEcoVillageResort", icon: Facebook },
+  { href: "https://www.tiktok.com/@mungluecovillage", label: "Munglu · TikTok", handle: "@mungluecovillage", icon: TikTokIcon },
+  { href: "https://www.mungluecovillage.co.ke", label: "Munglu · Website", handle: "mungluecovillage.co.ke", icon: ArrowUpRight },
 ];
 
-function Card({ s }: { s: SocialCard }) {
+function Tile({ s }: { s: Card }) {
   const external = s.href.startsWith("http");
   return (
     <a
       href={s.href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      className="glass glow-border group flex items-center gap-3 rounded-2xl p-4 transition-all hover:-translate-y-0.5 hover:ring-electric"
+      className="group flex items-center gap-3 rounded-2xl border border-rule bg-white p-4 transition-all hover:-translate-y-0.5 hover:border-ink hover:shadow-sm"
     >
-      <span className={`glass inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${s.tint}`}>
-        <s.icon className="h-5 w-5" />
+      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface text-ink">
+        <s.icon className="h-4 w-4" />
       </span>
-      <span className="min-w-0">
-        <span className="block text-sm font-semibold text-foreground">{s.label}</span>
-        <span className="block truncate font-mono text-xs text-muted-foreground">{s.handle}</span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-sm font-semibold text-ink">{s.label}</span>
+        <span className="block truncate font-mono text-xs ink-soft">{s.handle}</span>
       </span>
+      <ArrowUpRight className="h-4 w-4 shrink-0 text-ink-soft transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
     </a>
   );
 }
 
 export function ConnectSection() {
   return (
-    <Section
-      eyebrow="// connect"
-      title="Find me across the grid"
-      description="Personal channels, plus the brands I manage."
-    >
-      <div className="space-y-6">
+    <Section eyebrow="// connect" title={<>Find me <span className="serif-italic text-electric">across the grid.</span></>} description="Personal channels, plus the brands I run.">
+      <div className="space-y-10">
         <div>
-          <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-accent">// personal</p>
+          <p className="eyebrow mb-4">Personal</p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {personal.map((s) => <Card key={s.label} s={s} />)}
+            {personal.map((s) => <Tile key={s.label} s={s} />)}
           </div>
         </div>
         <div>
-          <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-accent">// brands I manage</p>
+          <p className="eyebrow mb-4">Brands I manage</p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {managed.map((s) => <Card key={s.label} s={s} />)}
+            {managed.map((s) => <Tile key={s.label} s={s} />)}
           </div>
         </div>
       </div>
