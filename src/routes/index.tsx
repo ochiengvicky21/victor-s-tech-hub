@@ -138,7 +138,7 @@ function Home() {
       <Section eyebrow="// stack">
         <div className="glass rounded-2xl px-6 py-5">
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-sm text-muted-foreground">
-            {["TypeScript", "React", "Node.js", "Python", "Tailwind", "Supabase", "Postgres", "Git", "Linux"].map((t) => (
+            {stack.map((t) => (
               <li key={t} className="inline-flex items-center gap-2">
                 <Sparkles className="h-3.5 w-3.5 text-accent" /> {t}
               </li>
