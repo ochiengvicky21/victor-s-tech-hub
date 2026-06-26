@@ -130,7 +130,7 @@ function Home() {
       <Section
         eyebrow="// live from github"
         title="Featured projects"
-        description="Pulled automatically from github.com/ochingvicky21. Push code, see it here."
+        description="Pulled automatically from github.com/ochiengvicky21. Push code, see it here."
       >
         {repos.isLoading && (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

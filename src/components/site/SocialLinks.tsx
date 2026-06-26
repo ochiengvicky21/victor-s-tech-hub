@@ -17,11 +17,11 @@ type Social = {
 };
 
 const socials: Social[] = [
-  { href: "https://github.com/ochingvicky21", label: "GitHub", icon: Github, external: true },
+  { href: "https://github.com/ochiengvicky21", label: "GitHub", icon: Github, external: true },
   { href: "https://www.tiktok.com/@v_o_otoday", label: "TikTok @v_o_otoday", icon: TikTokIcon, external: true },
   { href: "https://wa.me/254742676542", label: "WhatsApp", icon: MessageCircle, external: true },
   { href: "tel:+254742676542", label: "Call" , icon: Phone },
-  { href: "mailto:ochienvicky21@gmail.com", label: "Email", icon: Mail },
+  { href: "mailto:ochiengvicky21@gmail.com", label: "Email", icon: Mail },
 ];
 
 export function SocialLinks({ size = 18 }: { size?: number }) {

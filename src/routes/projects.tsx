@@ -10,7 +10,7 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects — Ochieng Victor Otieno" },
-      { name: "description", content: "Live feed of public repositories from github.com/ochingvicky21. Search and filter by language." },
+      { name: "description", content: "Live feed of public repositories from github.com/ochiengvicky21. Search and filter by language." },
       { property: "og:title", content: "Projects — Ochieng Victor Otieno" },
       { property: "og:description", content: "Live feed of public GitHub repositories." },
     ],
@@ -41,7 +41,7 @@ function Projects() {
     <Section
       eyebrow="// live from github"
       title="All projects"
-      description="Auto-synced from github.com/ochingvicky21. Updates as I push."
+      description="Auto-synced from github.com/ochiengvicky21. Updates as I push."
     >
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="glass glow-border flex flex-1 items-center gap-2 rounded-xl px-3 py-2">

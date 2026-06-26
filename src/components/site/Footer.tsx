@@ -25,8 +25,8 @@ export function Footer() {
             </p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <a href="mailto:ochienvicky21@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                  <Mail className="h-4 w-4" /> ochienvicky21@gmail.com
+                <a href="mailto:ochiengvicky21@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
+                  <Mail className="h-4 w-4" /> ochiengvicky21@gmail.com
                 </a>
               </li>
               <li>
@@ -35,8 +35,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://github.com/ochingvicky21" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                  <Github className="h-4 w-4" /> github.com/ochingvicky21
+                <a href="https://github.com/ochiengvicky21" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
+                  <Github className="h-4 w-4" /> github.com/ochiengvicky21
                 </a>
               </li>
             </ul>
