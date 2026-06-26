@@ -20,11 +20,11 @@ const socials: Social[] = [
   { href: "https://github.com/ochiengvicky21", label: "GitHub", icon: Github, external: true },
   { href: "https://www.tiktok.com/@v_o_otoday", label: "TikTok @v_o_otoday", icon: TikTokIcon, external: true },
   { href: "https://wa.me/254742676542", label: "WhatsApp", icon: MessageCircle, external: true },
-  { href: "tel:+254742676542", label: "Call" , icon: Phone },
+  { href: "tel:+254742676542", label: "Call", icon: Phone },
   { href: "mailto:ochiengvicky21@gmail.com", label: "Email", icon: Mail },
 ];
 
-export function SocialLinks({ size = 18 }: { size?: number }) {
+export function SocialLinks({ size = 16 }: { size?: number }) {
   return (
     <ul className="flex flex-wrap gap-2">
       {socials.map((s) => (
@@ -35,7 +35,7 @@ export function SocialLinks({ size = 18 }: { size?: number }) {
             rel={s.external ? "noreferrer" : undefined}
             aria-label={s.label}
             title={s.label}
-            className="glass group inline-flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-all hover:text-foreground hover:ring-electric hover:-translate-y-0.5"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-rule bg-white text-ink-soft transition-all hover:-translate-y-0.5 hover:border-ink hover:text-ink"
           >
             <s.icon style={{ width: size, height: size }} />
           </a>
