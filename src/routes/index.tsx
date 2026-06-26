@@ -1,211 +1,238 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Github, Sparkles } from "lucide-react";
-const photoAsset = { url: "/ochieng-victor.jpg" };
+import { ArrowRight, ArrowUpRight, Download, Github, PhoneCall } from "lucide-react";
 import { Section } from "@/components/site/Section";
-import { SocialLinks } from "@/components/site/SocialLinks";
-import { ConnectSection } from "@/components/site/ConnectSection";
 import { RepoCard } from "@/components/site/RepoCard";
+import { ConnectSection } from "@/components/site/ConnectSection";
+import { ProductsSection } from "@/components/site/ProductsSection";
+import { ServicesSection } from "@/components/site/ServicesSection";
+import { GithubDashboard } from "@/components/site/GithubDashboard";
+import { IndustriesSection } from "@/components/site/IndustriesSection";
+import { WhyMeSection } from "@/components/site/WhyMeSection";
+import { ProcessSection } from "@/components/site/ProcessSection";
+import { TimelineSection } from "@/components/site/TimelineSection";
+import { VisionSection } from "@/components/site/VisionSection";
+import { InsightsSection } from "@/components/site/InsightsSection";
 import { fetchGhRepos, fetchGhUser, GITHUB_USERNAME } from "@/lib/github";
+
+const photoAsset = { url: "/ochieng-victor.jpg" };
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ochieng Victor Otieno — Developer Portfolio" },
-      { name: "description", content: "Software developer crafting electric, modern web experiences. Live GitHub feed, projects, and contact." },
-      { property: "og:title", content: "Ochieng Victor Otieno — Developer Portfolio" },
-      { property: "og:description", content: "Software developer crafting electric, modern web experiences." },
+      { title: "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect" },
+      { name: "description", content: "Designing scalable digital systems for ambitious businesses. Full stack engineering, AI systems, SaaS architecture and digital transformation." },
+      { property: "og:title", content: "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect" },
+      { property: "og:description", content: "Designing scalable digital systems for ambitious businesses." },
     ],
   }),
   component: Home,
 });
 
+const titles = [
+  "Full Stack Engineer",
+  "AI Systems Builder",
+  "SaaS Architect",
+  "Digital Transformation Consultant",
+  "Software Product Engineer",
+];
+
 function Home() {
-  const repos = useQuery({
-    queryKey: ["gh", "repos"],
-    queryFn: () => fetchGhRepos(),
-    staleTime: 5 * 60_000,
-    refetchInterval: 5 * 60_000,
-    refetchOnWindowFocus: true,
-  });
-  const user = useQuery({
-    queryKey: ["gh", "user"],
-    queryFn: () => fetchGhUser(),
-    staleTime: 5 * 60_000,
-    refetchInterval: 5 * 60_000,
-    refetchOnWindowFocus: true,
-  });
+  const repos = useQuery({ queryKey: ["gh", "repos"], queryFn: fetchGhRepos, staleTime: 5 * 60_000, refetchInterval: 5 * 60_000, refetchOnWindowFocus: true });
+  const user = useQuery({ queryKey: ["gh", "user"], queryFn: fetchGhUser, staleTime: 5 * 60_000, refetchInterval: 5 * 60_000, refetchOnWindowFocus: true });
 
   const featured = repos.data?.slice(0, 6) ?? [];
-  const stack = (() => {
-    const counts = new Map<string, number>();
-    repos.data?.forEach((r) => {
-      if (r.language) counts.set(r.language, (counts.get(r.language) ?? 0) + 1);
-    });
-    const top = Array.from(counts.entries()).sort((a, b) => b[1] - a[1]).map(([l]) => l);
-    return top.length ? top.slice(0, 10) : ["TypeScript", "React", "Node.js", "Python", "Tailwind"];
-  })();
-
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative mx-auto w-full max-w-6xl px-4 pt-12 sm:pt-20">
-        <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <div className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-              </span>
-              <span className="font-mono uppercase tracking-[0.2em] text-muted-foreground">
-                Online · Nairobi
-              </span>
+      {/* HERO — magazine cover */}
+      <section className="relative mx-auto w-full max-w-6xl px-5 pt-16 sm:pt-24">
+        <div className="grid items-end gap-12 md:grid-cols-[1.3fr_1fr]">
+          <div className="animate-rise">
+            <div className="flex items-center gap-3">
+              <p className="eyebrow">Volume 03 · 2025</p>
+              <span className="h-px flex-1 bg-rule" />
+              <p className="font-mono text-[10px] uppercase tracking-wider ink-soft">Nairobi · Kenya</p>
             </div>
 
-            <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.05] sm:text-6xl">
-              <span className="text-foreground">I&apos;m </span>
-              <span className="text-gradient">Ochieng Victor</span>
-              <br />
-              <span className="text-foreground">Otieno</span>
-              <span className="text-accent">.</span>
+            <h1 className="mt-8 serif-display text-[clamp(3rem,8vw,7rem)]">
+              Building software<br />
+              that <span className="serif-italic text-electric">transforms</span><br />
+              businesses.
             </h1>
 
-            <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Software developer engineering electric digital products —
-              clean code, sharp UI, real-time data. This site reads my
-              GitHub in real time, so every push lands here automatically.
+            <p className="mt-8 max-w-xl text-lg leading-relaxed ink-soft">
+              I&apos;m <span className="text-ink">Victor Otieno Ochieng</span> — a full stack engineer
+              and SaaS architect designing scalable digital systems for hospitality, education,
+              real estate and the businesses ready to operate like enterprises.
             </p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link
                 to="/projects"
-                className="group inline-flex items-center gap-2 rounded-xl bg-electric px-5 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-glow-md)] transition-transform hover:scale-[1.03]"
+                className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-transform hover:scale-[1.02]"
               >
-                See live projects
+                View work
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 text-sm font-medium text-ink hover:bg-ink hover:text-paper"
+              >
+                <PhoneCall className="h-4 w-4" /> Book a discovery call
               </Link>
               <a
                 href={`https://github.com/${GITHUB_USERNAME}`}
                 target="_blank"
                 rel="noreferrer"
-                className="glass glow-border inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium"
+                className="inline-flex items-center gap-2 rounded-full border border-rule bg-white px-5 py-3 text-sm font-medium text-ink-soft hover:text-ink"
               >
                 <Github className="h-4 w-4" /> @{GITHUB_USERNAME}
               </a>
+              <a
+                href="/ochieng-victor.jpg"
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-rule bg-white px-5 py-3 text-sm font-medium text-ink-soft hover:text-ink"
+              >
+                <Download className="h-4 w-4" /> Download CV
+              </a>
             </div>
 
-            <div className="mt-8">
-              <SocialLinks />
+            {/* Title marquee */}
+            <div className="mt-12 overflow-hidden rule-t pt-6">
+              <div className="flex animate-marquee gap-10 whitespace-nowrap font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
+                {[...titles, ...titles, ...titles].map((t, i) => (
+                  <span key={i} className="inline-flex items-center gap-10">
+                    <span>{t}</span><span className="text-electric">·</span>
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Portrait */}
-          <div className="relative mx-auto w-full max-w-sm">
-            <div
-              aria-hidden
-              className="absolute -inset-6 rounded-[2rem] blur-3xl opacity-60 animate-pulse-glow"
-              style={{ background: "var(--gradient-aurora)" }}
-            />
-            <div className="glass-strong glow-border relative overflow-hidden rounded-[2rem] p-2">
+          {/* Portrait — editorial frame */}
+          <figure className="relative mx-auto w-full max-w-md">
+            <div className="relative overflow-hidden rounded-[2rem] border border-rule bg-white shadow-lg">
               <img
                 src={photoAsset.url}
-                alt="Portrait of Ochieng Victor Otieno"
+                alt="Portrait of Victor Otieno Ochieng"
                 width={720}
                 height={960}
-                className="aspect-[3/4] w-full rounded-[1.6rem] object-cover"
+                className="aspect-[3/4] w-full object-cover"
               />
-              <div className="pointer-events-none absolute inset-2 rounded-[1.6rem] ring-1 ring-white/10" />
             </div>
 
-            {/* floating stat chips */}
-            <div className="glass animate-float absolute -bottom-4 -left-4 rounded-2xl px-4 py-3 text-sm shadow-[var(--shadow-glow-sm)]">
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">repos</p>
-              <p className="text-lg font-semibold text-gradient">
-                {user.data?.public_repos ?? "—"}
-              </p>
+            <div className="absolute -bottom-4 -left-4 rounded-2xl border border-rule bg-white px-4 py-3 shadow-md animate-float">
+              <p className="eyebrow">Repos</p>
+              <p className="serif-display text-3xl text-ink">{user.data?.public_repos ?? "—"}</p>
             </div>
-            <div className="glass animate-float absolute -top-4 -right-4 rounded-2xl px-4 py-3 text-sm shadow-[var(--shadow-glow-sm)]" style={{ animationDelay: "1.5s" }}>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">followers</p>
-              <p className="text-lg font-semibold text-gradient">
-                {user.data?.followers ?? "—"}
-              </p>
+            <div className="absolute -top-4 -right-4 rounded-2xl border border-rule bg-white px-4 py-3 shadow-md animate-float" style={{ animationDelay: "1.5s" }}>
+              <p className="eyebrow">Followers</p>
+              <p className="serif-display text-3xl text-ink">{user.data?.followers ?? "—"}</p>
             </div>
-          </div>
+
+            <figcaption className="mt-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider ink-soft">
+              <span>Fig. 01 — Engineer at work</span>
+              <span className="text-electric">● Live</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* STACK MARQUEE */}
-      <Section eyebrow="// stack">
-        <div className="glass rounded-2xl px-6 py-5">
-          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-sm text-muted-foreground">
-            {stack.map((t) => (
-              <li key={t} className="inline-flex items-center gap-2">
-                <Sparkles className="h-3.5 w-3.5 text-accent" /> {t}
-              </li>
-            ))}
-          </ul>
+      {/* STORY — magazine feature */}
+      <Section eyebrow="// the story">
+        <div className="grid gap-12 md:grid-cols-[1fr_1.6fr]">
+          <h2 className="serif-display text-5xl text-ink sm:text-6xl">
+            Software, treated like <span className="serif-italic text-electric">infrastructure.</span>
+          </h2>
+          <div className="space-y-5 text-base leading-relaxed ink-soft sm:text-lg">
+            <p>
+              I build software the way good architects build buildings — for the people who&apos;ll live
+              inside it, and for the decades after launch. Every line of code is in service of a
+              business outcome.
+            </p>
+            <p>
+              My work spans hotel and resort management, property and real-estate platforms,
+              educational systems, school ERPs, library systems, AI dashboards, business automation,
+              booking platforms, payment systems, role-based access, multi-tenant SaaS,
+              administrative dashboards and analytics.
+            </p>
+            <p>
+              Long term, I&apos;m building enterprise-grade SaaS products used by businesses across
+              Africa and internationally — software that doesn&apos;t apologize for where it&apos;s built.
+            </p>
+            <Link to="/about" className="group inline-flex items-center gap-1.5 text-sm font-medium text-ink">
+              Read the full story
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </div>
       </Section>
 
+      <ProductsSection />
+      <ServicesSection />
+      <GithubDashboard />
+
       {/* FEATURED REPOS */}
       <Section
-        eyebrow="// live from github"
-        title="Featured projects"
-        description="Pulled automatically from github.com/ochiengvicky21. Push code, see it here."
+        eyebrow="// featured work"
+        title={<>Selected <span className="serif-italic text-electric">case studies.</span></>}
+        description="A live cut of recent public repositories — auto-synced from GitHub."
       >
         {repos.isLoading && (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="glass h-44 animate-pulse rounded-2xl" />
+              <div key={i} className="h-56 animate-pulse rounded-2xl border border-rule bg-surface" />
             ))}
           </div>
         )}
-
         {repos.isError && (
-          <div className="glass rounded-2xl p-6 text-sm text-muted-foreground">
+          <div className="rounded-2xl border border-rule bg-white p-6 text-sm ink-soft">
             Couldn&apos;t reach GitHub right now. Try again in a moment.
           </div>
         )}
-
-        {repos.isSuccess && featured.length === 0 && (
-          <div className="glass rounded-2xl p-6 text-sm text-muted-foreground">
-            No public repositories yet — check back soon.
-          </div>
-        )}
-
         {featured.length > 0 && (
           <>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((r) => <RepoCard key={r.id} repo={r} />)}
             </div>
-            <div className="mt-8 flex justify-center">
-              <Link to="/projects" className="glass glow-border inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium hover:ring-electric">
-                View all projects <ArrowRight className="h-4 w-4" />
+            <div className="mt-10 flex justify-center">
+              <Link to="/projects" className="group inline-flex items-center gap-2 rounded-full border border-ink px-5 py-3 text-sm font-medium hover:bg-ink hover:text-paper">
+                View all projects <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
           </>
         )}
       </Section>
 
+      <IndustriesSection />
+      <ProcessSection />
+      <WhyMeSection />
+      <TimelineSection />
+      <VisionSection />
+      <InsightsSection />
       <ConnectSection />
 
       {/* CTA */}
       <Section>
-        <div className="glass-strong glow-border relative overflow-hidden rounded-3xl p-10 text-center">
-          <div aria-hidden className="absolute inset-0 -z-10 opacity-40" style={{ background: "var(--gradient-aurora)", filter: "blur(80px)" }} />
-          <h3 className="text-2xl font-semibold sm:text-3xl">
-            Have a project in mind?
+        <div className="relative overflow-hidden rounded-3xl border border-rule bg-ink p-12 text-paper sm:p-16">
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-paper/60">// let&apos;s build together</p>
+          <h3 className="mt-4 max-w-3xl serif-display text-5xl sm:text-6xl">
+            Have an ambitious system <span className="serif-italic text-[oklch(0.78_0.14_256)]">to build?</span>
           </h3>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-            I&apos;m available for freelance and full-time engineering work. Let&apos;s build something electric.
+          <p className="mt-5 max-w-xl text-base text-paper/70">
+            I take on a small number of engagements each quarter. If you&apos;re ready to digitize,
+            scale, or rebuild what you have — let&apos;s talk.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-xl bg-electric px-5 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-glow-md)]">
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink hover:opacity-90">
               Start a conversation <ArrowRight className="h-4 w-4" />
             </Link>
-            <a href="https://wa.me/254742676542" target="_blank" rel="noreferrer" className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium">
+            <a href="https://wa.me/254742676542" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-paper/30 px-6 py-3 text-sm font-medium text-paper hover:bg-paper/10">
               WhatsApp me
+            </a>
+            <a href="mailto:ochiengvicky21@gmail.com" className="inline-flex items-center gap-2 rounded-full border border-paper/30 px-6 py-3 text-sm font-medium text-paper hover:bg-paper/10">
+              Request a proposal
             </a>
           </div>
         </div>
