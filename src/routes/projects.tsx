@@ -19,7 +19,13 @@ export const Route = createFileRoute("/projects")({
 });
 
 function Projects() {
-  const repos = useQuery({ queryKey: ["gh", "repos"], queryFn: fetchGhRepos, staleTime: 5 * 60_000 });
+  const repos = useQuery({
+    queryKey: ["gh", "repos"],
+    queryFn: () => fetchGhRepos(),
+    staleTime: 5 * 60_000,
+    refetchInterval: 5 * 60_000,
+    refetchOnWindowFocus: true,
+  });
   const [q, setQ] = useState("");
   const [lang, setLang] = useState<string | null>(null);
 
