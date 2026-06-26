@@ -49,6 +49,26 @@ export function Footer() {
             <div className="mt-3">
               <SocialLinks />
             </div>
+            <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              // brands I manage
+            </p>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li>
+                <a href="https://www.facebook.com/MungluEcoVillageResort" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground">
+                  Munglu Eco Village · Facebook
+                </a>
+              </li>
+              <li>
+                <a href="https://www.tiktok.com/@mungluecovillage" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground">
+                  Munglu Eco Village · TikTok
+                </a>
+              </li>
+              <li>
+                <a href="https://www.mungluecovillage.co.ke" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground">
+                  mungluecovillage.co.ke
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

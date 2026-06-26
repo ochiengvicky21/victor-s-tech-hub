@@ -13,7 +13,7 @@ import {
   Facebook,
 } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
-import photoAsset from "@/assets/ochieng-victor.jpg.asset.json";
+const photoAsset = { url: "/ochieng-victor.jpg" };
 import { Section } from "@/components/site/Section";
 import { fetchGhUser } from "@/lib/github";
 
