@@ -1,7 +1,7 @@
-// GitHub public API helpers for ochingvicky21
+// GitHub public API helpers for ochiengvicky21
 // All endpoints are public and unauthenticated.
 
-export const GITHUB_USERNAME = "ochingvicky21";
+export const GITHUB_USERNAME = "ochiengvicky21";
 const GH = "https://api.github.com";
 
 export interface GhUser {

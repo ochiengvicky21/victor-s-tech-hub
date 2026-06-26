@@ -19,8 +19,8 @@ const channels = [
   {
     icon: Mail,
     label: "Email",
-    value: "ochienvicky21@gmail.com",
-    href: "mailto:ochienvicky21@gmail.com",
+    value: "ochiengvicky21@gmail.com",
+    href: "mailto:ochiengvicky21@gmail.com",
     note: "Best for project briefs and long-form messages.",
   },
   {
