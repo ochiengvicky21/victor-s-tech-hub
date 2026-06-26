@@ -20,10 +20,31 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const repos = useQuery({ queryKey: ["gh", "repos"], queryFn: fetchGhRepos, staleTime: 5 * 60_000 });
-  const user = useQuery({ queryKey: ["gh", "user"], queryFn: fetchGhUser, staleTime: 5 * 60_000 });
+  const repos = useQuery({
+    queryKey: ["gh", "repos"],
+    queryFn: () => fetchGhRepos(),
+    staleTime: 5 * 60_000,
+    refetchInterval: 5 * 60_000,
+    refetchOnWindowFocus: true,
+  });
+  const user = useQuery({
+    queryKey: ["gh", "user"],
+    queryFn: () => fetchGhUser(),
+    staleTime: 5 * 60_000,
+    refetchInterval: 5 * 60_000,
+    refetchOnWindowFocus: true,
+  });
 
   const featured = repos.data?.slice(0, 6) ?? [];
+  const stack = (() => {
+    const counts = new Map<string, number>();
+    repos.data?.forEach((r) => {
+      if (r.language) counts.set(r.language, (counts.get(r.language) ?? 0) + 1);
+    });
+    const top = Array.from(counts.entries()).sort((a, b) => b[1] - a[1]).map(([l]) => l);
+    return top.length ? top.slice(0, 10) : ["TypeScript", "React", "Node.js", "Python", "Tailwind"];
+  })();
+
 
   return (
     <>
