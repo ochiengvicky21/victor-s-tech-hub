@@ -188,6 +188,8 @@ function Home() {
         )}
       </Section>
 
+      <ConnectSection />
+
       {/* CTA */}
       <Section>
         <div className="glass-strong glow-border relative overflow-hidden rounded-3xl p-10 text-center">
