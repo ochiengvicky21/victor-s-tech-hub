@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Github, Sparkles } from "lucide-react";
-import photoAsset from "@/assets/ochieng-victor.jpg.asset.json";
+const photoAsset = { url: "/ochieng-victor.jpg" };
 import { Section } from "@/components/site/Section";
 import { SocialLinks } from "@/components/site/SocialLinks";
 import { RepoCard } from "@/components/site/RepoCard";
