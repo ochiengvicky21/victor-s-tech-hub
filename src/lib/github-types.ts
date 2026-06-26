@@ -34,5 +34,5 @@ export interface GhEvent {
   type: string;
   repo: { name: string };
   created_at: string;
-  payload: Record<string, unknown>;
+  payload: Record<string, unknown> | null;
 }
