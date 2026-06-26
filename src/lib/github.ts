@@ -1,73 +1,9 @@
-// GitHub public API helpers for ochiengvicky21
-// All endpoints are public and unauthenticated.
+// GitHub data layer — fetched on the server (with cache + optional token)
+// to avoid unauthenticated client rate limits.
+export { getGhUser as fetchGhUser, getGhRepos as fetchGhRepos, getGhEvents as fetchGhEvents } from "./github.functions";
+export type { GhUser, GhRepo, GhEvent } from "./github-types";
 
 export const GITHUB_USERNAME = "ochiengvicky21";
-const GH = "https://api.github.com";
-
-export interface GhUser {
-  login: string;
-  name: string | null;
-  avatar_url: string;
-  bio: string | null;
-  html_url: string;
-  public_repos: number;
-  followers: number;
-  following: number;
-  location: string | null;
-  company: string | null;
-  blog: string | null;
-}
-
-export interface GhRepo {
-  id: number;
-  name: string;
-  full_name: string;
-  description: string | null;
-  html_url: string;
-  homepage: string | null;
-  language: string | null;
-  stargazers_count: number;
-  forks_count: number;
-  topics: string[];
-  fork: boolean;
-  archived: boolean;
-  updated_at: string;
-  pushed_at: string;
-}
-
-export interface GhEvent {
-  id: string;
-  type: string;
-  repo: { name: string };
-  created_at: string;
-  payload: Record<string, unknown>;
-}
-
-async function gh<T>(path: string): Promise<T> {
-  const res = await fetch(`${GH}${path}`, {
-    headers: { Accept: "application/vnd.github+json" },
-  });
-  if (!res.ok) throw new Error(`GitHub ${path} failed: ${res.status}`);
-  return res.json() as Promise<T>;
-}
-
-export const fetchGhUser = () => gh<GhUser>(`/users/${GITHUB_USERNAME}`);
-
-export const fetchGhRepos = async (): Promise<GhRepo[]> => {
-  const repos = await gh<GhRepo[]>(
-    `/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
-  );
-  return repos
-    .filter((r) => !r.fork && !r.archived)
-    .sort((a, b) => +new Date(b.pushed_at) - +new Date(a.pushed_at));
-};
-
-export const fetchGhEvents = async (): Promise<GhEvent[]> => {
-  const events = await gh<GhEvent[]>(
-    `/users/${GITHUB_USERNAME}/events/public?per_page=20`,
-  );
-  return events.slice(0, 12);
-};
 
 const LANG_COLORS: Record<string, string> = {
   TypeScript: "oklch(0.72 0.18 240)",
