@@ -4,6 +4,7 @@ import { ArrowRight, Github, Sparkles } from "lucide-react";
 const photoAsset = { url: "/ochieng-victor.jpg" };
 import { Section } from "@/components/site/Section";
 import { SocialLinks } from "@/components/site/SocialLinks";
+import { ConnectSection } from "@/components/site/ConnectSection";
 import { RepoCard } from "@/components/site/RepoCard";
 import { fetchGhRepos, fetchGhUser, GITHUB_USERNAME } from "@/lib/github";
 
