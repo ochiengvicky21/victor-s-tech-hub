@@ -14,7 +14,11 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
-const FAVICON = "/favicon-voo-v3.png";
+const FAVICON = "/favicon.ico";
+const ICON_192 = "/icons/icon-192.png";
+const ICON_512 = "/icons/icon-512.png";
+const APPLE_ICON = "/icons/icon-180.png";
+const OG_IMAGE = "/og-image.jpg";
 
 function NotFoundComponent() {
   return (
