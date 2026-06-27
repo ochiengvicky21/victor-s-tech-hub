@@ -14,7 +14,11 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
-const FAVICON = "/favicon-voo-v3.png";
+const FAVICON = "/favicon.ico";
+const ICON_192 = "/icons/icon-192.png";
+const ICON_512 = "/icons/icon-512.png";
+const APPLE_ICON = "/icons/icon-180.png";
+const OG_IMAGE = "/og-image.jpg";
 
 function NotFoundComponent() {
   return (
@@ -75,16 +79,44 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Designing scalable digital systems for ambitious businesses." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Victor Otieno Ochieng" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: FAVICON },
-      { rel: "shortcut icon", type: "image/png", href: FAVICON },
-      { rel: "apple-touch-icon", href: FAVICON },
+      { rel: "icon", href: FAVICON, sizes: "any" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/icons/icon-32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/icons/icon-16.png" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: ICON_192 },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: ICON_512 },
+      { rel: "apple-touch-icon", sizes: "180x180", href: APPLE_ICON },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Victor Otieno Ochieng",
+          jobTitle: "Full Stack Engineer & SaaS Architect",
+          email: "mailto:ochiengvicky21@gmail.com",
+          telephone: "+254742676542",
+          image: OG_IMAGE,
+          url: "/",
+          sameAs: [
+            "https://github.com/ochiengvicky21",
+            "https://www.tiktok.com/@v_o_otoday",
+          ],
+          address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" },
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

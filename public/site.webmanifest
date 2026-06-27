@@ -1,0 +1,14 @@
+{
+  "name": "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect",
+  "short_name": "Victor Ochieng",
+  "description": "Portfolio of Victor Otieno Ochieng — full stack engineer, AI systems builder and SaaS architect.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fafbfc",
+  "theme_color": "#0b0d12",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
