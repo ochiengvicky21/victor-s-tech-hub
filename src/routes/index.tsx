@@ -89,12 +89,13 @@ function Home() {
               >
                 <Github className="h-4 w-4" /> @{GITHUB_USERNAME}
               </a>
-              <Link
-                to="/resume"
+              <a
+                href="/Victor-Otieno-Ochieng-CV.pdf"
+                download="Victor-Otieno-Ochieng-CV.pdf"
                 className="inline-flex items-center gap-2 rounded-full border border-rule bg-white px-5 py-3 text-sm font-medium text-ink-soft hover:text-ink"
               >
                 <Download className="h-4 w-4" /> Download CV
-              </Link>
+              </a>
             </div>
 
             {/* Title marquee */}
