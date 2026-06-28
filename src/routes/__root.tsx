@@ -14,11 +14,12 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
-const FAVICON = "/favicon.ico";
-const ICON_192 = "/icons/icon-192.png";
-const ICON_512 = "/icons/icon-512.png";
-const APPLE_ICON = "/icons/icon-180.png";
-const OG_IMAGE = "/og-image.jpg";
+const V = "v4";
+const FAVICON = `/favicon.ico?${V}`;
+const ICON_192 = `/icons/icon-192.png?${V}`;
+const ICON_512 = `/icons/icon-512.png?${V}`;
+const APPLE_ICON = `/icons/icon-180.png?${V}`;
+const OG_IMAGE = "/ochieng-victor.jpg";
 
 function NotFoundComponent() {
   return (
