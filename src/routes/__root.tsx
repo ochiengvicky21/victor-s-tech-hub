@@ -14,11 +14,12 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
-const FAVICON = "/favicon.ico";
-const ICON_192 = "/icons/icon-192.png";
-const ICON_512 = "/icons/icon-512.png";
-const APPLE_ICON = "/icons/icon-180.png";
-const OG_IMAGE = "/og-image.jpg";
+const V = "v4";
+const FAVICON = `/favicon.ico?${V}`;
+const ICON_192 = `/icons/icon-192.png?${V}`;
+const ICON_512 = `/icons/icon-512.png?${V}`;
+const APPLE_ICON = `/icons/icon-180.png?${V}`;
+const OG_IMAGE = "/ochieng-victor.jpg";
 
 function NotFoundComponent() {
   return (
@@ -88,8 +89,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: FAVICON, sizes: "any" },
-      { rel: "icon", type: "image/png", sizes: "32x32", href: "/icons/icon-32.png" },
-      { rel: "icon", type: "image/png", sizes: "16x16", href: "/icons/icon-16.png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: `/icons/icon-32.png?${V}` },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: `/icons/icon-16.png?${V}` },
       { rel: "icon", type: "image/png", sizes: "192x192", href: ICON_192 },
       { rel: "icon", type: "image/png", sizes: "512x512", href: ICON_512 },
       { rel: "apple-touch-icon", sizes: "180x180", href: APPLE_ICON },
