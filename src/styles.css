@@ -261,3 +261,20 @@
 @utility animate-marquee { animation: marquee 40s linear infinite; }
 @utility animate-rise { animation: rise 0.8s var(--ease-out-expo) both; }
 @utility animate-shimmer-line { animation: shimmer-line 1.4s var(--ease-out-expo) both; }
+
+/* CMS rendered markdown */
+.cms-content h1, .cms-content h2, .cms-content h3 { font-family: "Instrument Serif", serif; margin-top: 1.5em; }
+.cms-content h1 { font-size: 2rem; }
+.cms-content h2 { font-size: 1.5rem; }
+.cms-content h3 { font-size: 1.2rem; }
+.cms-content p { margin: 0.75em 0; }
+.cms-content a { text-decoration: underline; }
+.cms-content ul, .cms-content ol { padding-left: 1.5em; margin: 0.75em 0; }
+.cms-content ul { list-style: disc; }
+.cms-content ol { list-style: decimal; }
+.cms-content code { background: var(--surface, #f4f4f5); padding: 0.1em 0.35em; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
+.cms-content pre { background: #0b0d12; color: #f4f4f5; padding: 1rem; border-radius: 8px; overflow-x: auto; font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+.cms-content pre code { background: transparent; padding: 0; color: inherit; }
+.cms-content blockquote { border-left: 3px solid #e5e7eb; padding-left: 1rem; color: #6b7280; font-style: italic; }
+.cms-content img { border-radius: 8px; max-width: 100%; height: auto; }
+.cms-content hr { border: 0; border-top: 1px solid #e5e7eb; margin: 2em 0; }
