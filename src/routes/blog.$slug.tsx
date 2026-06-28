@@ -43,7 +43,7 @@ function BlogPostPage() {
       <h1 className="mt-2 serif-display text-5xl">{post.title}</h1>
       {post.date && <p className="mt-2 text-xs ink-soft">{post.date}</p>}
       <div
-        className="prose prose-neutral mt-8 max-w-none prose-headings:font-serif prose-a:text-ink prose-img:rounded-lg"
+        className="cms-content mt-8 space-y-4 text-[1.05rem] leading-relaxed text-ink"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </article>
