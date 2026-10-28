@@ -1,5 +1,5 @@
-// Static CMS config. The public site reads markdown from this GitHub location.
-// The admin panel writes to the same place (commits .md files via the GitHub Contents API).
+// Static CMS config. The public site reads markdown and portfolio JSON from this repository.
+// The admin panel commits content through the GitHub Contents API.
 // Commits trigger your Netlify/host deploy → posts appear live within ~1 minute.
 export const CMS = {
   owner: "ochiengvicky21",

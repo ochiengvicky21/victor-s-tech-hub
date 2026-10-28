@@ -11,7 +11,10 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Work — Victor Otieno Ochieng" },
-      { name: "description", content: "Case studies and live repositories from github.com/ochiengvicky21." },
+      {
+        name: "description",
+        content: "Case studies and live repositories from github.com/ochiengvicky21.",
+      },
       { property: "og:title", content: "Work — Victor Otieno Ochieng" },
     ],
   }),
@@ -38,27 +41,41 @@ function Projects() {
   const filtered = useMemo(() => {
     return (repos.data ?? []).filter((r) => {
       if (lang && r.language !== lang) return false;
-      if (q && !`${r.name} ${r.description ?? ""} ${r.topics.join(" ")}`.toLowerCase().includes(q.toLowerCase())) return false;
+      if (
+        q &&
+        !`${r.name} ${r.description ?? ""} ${r.topics.join(" ")}`
+          .toLowerCase()
+          .includes(q.toLowerCase())
+      )
+        return false;
       return true;
     });
   }, [repos.data, q, lang]);
 
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl px-5 pt-16 sm:pt-24">
+      <section className="page-intro mx-auto mt-8 w-full max-w-7xl px-6 py-9 sm:px-10 sm:py-12">
         <p className="eyebrow">// work · live from github</p>
-        <h1 className="mt-6 serif-display text-[clamp(3rem,7vw,6rem)]">
-          Every project, <span className="serif-italic text-electric">in the open.</span>
+        <h1 className="mt-4 max-w-5xl text-[clamp(2.5rem,6vw,5rem)] font-semibold tracking-tight text-ink">
+          Every project, <span className="text-electric">in the open.</span>
         </h1>
-        <p className="mt-6 max-w-2xl text-lg ink-soft">
-          A live feed of public repositories from <span className="text-ink">github.com/ochiengvicky21</span>.
-          Search, filter, and follow the work as it ships.
+        <p className="mt-5 max-w-2xl text-base leading-relaxed ink-soft sm:text-lg">
+          A live feed of public repositories from{" "}
+          <span className="text-ink">github.com/ochiengvicky21</span>. Search, filter, and follow
+          the work as it ships.
         </p>
       </section>
 
       <GithubDashboard />
 
-      <Section eyebrow="// all repositories" title={<>Browse the <span className="serif-italic text-electric">archive.</span></>}>
+      <Section
+        eyebrow="// all repositories"
+        title={
+          <>
+            Browse the <span className="serif-italic text-electric">archive.</span>
+          </>
+        }
+      >
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="flex flex-1 items-center gap-2 rounded-full border border-rule bg-white px-4 py-2.5">
             <Search className="h-4 w-4 text-ink-soft" />
@@ -91,7 +108,10 @@ function Projects() {
         {repos.isLoading && (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 9 }).map((_, i) => (
-              <div key={i} className="h-56 animate-pulse rounded-2xl border border-rule bg-surface" />
+              <div
+                key={i}
+                className="h-56 animate-pulse rounded-2xl border border-rule bg-surface"
+              />
             ))}
           </div>
         )}
@@ -108,7 +128,9 @@ function Projects() {
               </div>
             ) : (
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {filtered.map((r) => <RepoCard key={r.id} repo={r} />)}
+                {filtered.map((r) => (
+                  <RepoCard key={r.id} repo={r} />
+                ))}
               </div>
             )}
             <p className="mt-8 text-center font-mono text-xs ink-soft">

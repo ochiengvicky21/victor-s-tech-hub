@@ -28,7 +28,11 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Victor Otieno Ochieng" },
-      { name: "description", content: "Victor Otieno Ochieng — full stack engineer, AI systems builder, SaaS architect, social media manager, and English & Literature teacher." },
+      {
+        name: "description",
+        content:
+          "Victor Otieno Ochieng — full stack engineer, AI systems builder, SaaS architect, social media manager, and English & Literature teacher.",
+      },
       { property: "og:title", content: "About — Victor Otieno Ochieng" },
     ],
   }),
@@ -44,18 +48,62 @@ function TikTokIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 const skills: { icon: ComponentType<SVGProps<SVGSVGElement>>; title: string; body: string }[] = [
-  { icon: Code2, title: "Frontend Engineering", body: "React, TypeScript, Tailwind — accessible, animated, and editorial." },
-  { icon: Cpu, title: "Backend Engineering", body: "Node.js, Python, REST & realtime APIs at scale." },
-  { icon: Database, title: "Database Architecture", body: "Postgres, MySQL, Mongo — modelled for the next 3 years." },
-  { icon: CloudCog, title: "Cloud & DevOps", body: "Vercel, Netlify, AWS, Supabase — production-grade deploys." },
-  { icon: Workflow, title: "Business Automation", body: "Cut the loops — invoices, reminders, onboarding, reporting." },
-  { icon: Cpu, title: "AI Systems", body: "Assistants, summarization, retrieval — embedded where it earns its place." },
-  { icon: Globe, title: "Web Revamps & SEO", body: "Modernize tired sites — performance, UX, conversion, search." },
-  { icon: CreditCard, title: "Payments", body: "M-Pesa, Stripe, PayPal — checkout that earns trust." },
+  {
+    icon: Code2,
+    title: "Frontend Engineering",
+    body: "React, TypeScript, Tailwind — accessible, animated, and editorial.",
+  },
+  {
+    icon: Cpu,
+    title: "Backend Engineering",
+    body: "Node.js, Python, REST & realtime APIs at scale.",
+  },
+  {
+    icon: Database,
+    title: "Database Architecture",
+    body: "Postgres, MySQL, Mongo — modelled for the next 3 years.",
+  },
+  {
+    icon: CloudCog,
+    title: "Cloud & DevOps",
+    body: "Vercel, Netlify, AWS, Supabase — production-grade deploys.",
+  },
+  {
+    icon: Workflow,
+    title: "Business Automation",
+    body: "Cut the loops — invoices, reminders, onboarding, reporting.",
+  },
+  {
+    icon: Cpu,
+    title: "AI Systems",
+    body: "Assistants, summarization, retrieval — embedded where it earns its place.",
+  },
+  {
+    icon: Globe,
+    title: "Web Revamps & SEO",
+    body: "Modernize tired sites — performance, UX, conversion, search.",
+  },
+  {
+    icon: CreditCard,
+    title: "Payments",
+    body: "M-Pesa, Stripe, PayPal — checkout that earns trust.",
+  },
   { icon: Gauge, title: "Performance", body: "Core Web Vitals, edge caching, image strategy." },
-  { icon: Lightbulb, title: "Consulting", body: "Architecture reviews, second opinions, hiring help." },
-  { icon: Megaphone, title: "Social Media Management", body: "Content strategy, posting, growth — Facebook & TikTok." },
-  { icon: GraduationCap, title: "English & Literature", body: "Classroom teaching, exam prep, literary analysis." },
+  {
+    icon: Lightbulb,
+    title: "Consulting",
+    body: "Architecture reviews, second opinions, hiring help.",
+  },
+  {
+    icon: Megaphone,
+    title: "Social Media Management",
+    body: "Content strategy, posting, growth — Facebook & TikTok.",
+  },
+  {
+    icon: GraduationCap,
+    title: "English & Literature",
+    body: "Classroom teaching, exam prep, literary analysis.",
+  },
 ];
 
 type Experience = {
@@ -72,9 +120,21 @@ const experience: Experience[] = [
     org: "Munglu Eco Village Resort",
     body: "Designed, built and maintain the resort's website. Run their Facebook and TikTok — content planning, posting, audience growth, and community engagement.",
     links: [
-      { href: "https://www.mungluecovillage.co.ke", label: "mungluecovillage.co.ke", icon: ExternalLink },
-      { href: "https://www.facebook.com/MungluEcoVillageResort", label: "Facebook", icon: Facebook },
-      { href: "https://www.tiktok.com/@mungluecovillage", label: "@mungluecovillage", icon: TikTokIcon },
+      {
+        href: "https://www.mungluecovillage.co.ke",
+        label: "mungluecovillage.co.ke",
+        icon: ExternalLink,
+      },
+      {
+        href: "https://www.facebook.com/MungluEcoVillageResort",
+        label: "Facebook",
+        icon: Facebook,
+      },
+      {
+        href: "https://www.tiktok.com/@mungluecovillage",
+        label: "@mungluecovillage",
+        icon: TikTokIcon,
+      },
     ],
   },
   {
@@ -91,10 +151,10 @@ function About() {
   return (
     <>
       {/* HEADER */}
-      <section className="mx-auto w-full max-w-6xl px-5 pt-16 sm:pt-24">
+      <section className="page-intro mx-auto mt-8 w-full max-w-7xl px-6 py-9 sm:px-10 sm:py-12">
         <p className="eyebrow">// about</p>
-        <h1 className="mt-6 serif-display text-[clamp(3rem,7vw,6rem)]">
-          The story behind <span className="serif-italic text-electric">the work.</span>
+        <h1 className="mt-4 max-w-5xl text-[clamp(2.5rem,6vw,5rem)] font-semibold tracking-tight text-ink">
+          The story behind <span className="text-electric">the work.</span>
         </h1>
       </section>
 
@@ -102,7 +162,7 @@ function About() {
       <Section>
         <div className="grid gap-12 md:grid-cols-[0.9fr_1.4fr]">
           <figure className="relative">
-            <div className="overflow-hidden rounded-[2rem] border border-rule bg-white shadow-md">
+            <div className="tech-card overflow-hidden p-2">
               <img
                 src={photoAsset.url}
                 alt="Victor Otieno Ochieng"
@@ -120,12 +180,13 @@ function About() {
 
           <div className="space-y-6 text-lg leading-relaxed ink-soft">
             <p className="font-serif text-3xl italic text-ink">
-              &ldquo;I build software the way good architects build buildings — for the people who&apos;ll live inside it.&rdquo;
+              &ldquo;I build software the way good architects build buildings — for the people
+              who&apos;ll live inside it.&rdquo;
             </p>
             <p>
-              I&apos;m <span className="text-ink">Victor Otieno Ochieng</span> — a full stack engineer
-              and SaaS architect based in Kenya. I design and build software for businesses that
-              want to operate like enterprises: hotels, resorts, schools, property managers,
+              I&apos;m <span className="text-ink">Victor Otieno Ochieng</span> — a full stack
+              engineer and SaaS architect based in Kenya. I design and build software for businesses
+              that want to operate like enterprises: hotels, resorts, schools, property managers,
               clinics, NGOs, and the next wave of SMEs going digital.
             </p>
             <p>
@@ -136,12 +197,22 @@ function About() {
             </p>
             <p>
               Outside the editor I manage social media for businesses — most recently{" "}
-              <a className="text-ink underline-offset-4 hover:underline" href="https://www.mungluecovillage.co.ke" target="_blank" rel="noreferrer">
+              <a
+                className="text-ink underline-offset-4 hover:underline"
+                href="https://www.mungluecovillage.co.ke"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Munglu Eco Village Resort
-              </a>
-              {" "}— and I&apos;ve taught English and Literature at Sango Academy in Homa Bay. I post
+              </a>{" "}
+              — and I&apos;ve taught English and Literature at Sango Academy in Homa Bay. I post
               tech work as{" "}
-              <a className="text-ink underline-offset-4 hover:underline" href="https://www.tiktok.com/@v_o_otoday" target="_blank" rel="noreferrer">
+              <a
+                className="text-ink underline-offset-4 hover:underline"
+                href="https://www.tiktok.com/@v_o_otoday"
+                target="_blank"
+                rel="noreferrer"
+              >
                 @v_o_otoday
               </a>{" "}
               on TikTok.
@@ -162,11 +233,15 @@ function About() {
       {/* CAPABILITIES */}
       <Section
         eyebrow="// capabilities"
-        title={<>What I bring to the <span className="serif-italic text-electric">table.</span></>}
+        title={
+          <>
+            What I bring to the <span className="serif-italic text-electric">table.</span>
+          </>
+        }
       >
         <div className="grid gap-px overflow-hidden rounded-3xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((s) => (
-            <div key={s.title} className="bg-white p-6">
+            <div key={s.title} className="bg-white p-6 transition-colors hover:bg-surface/70">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-ink">
                 <s.icon className="h-4 w-4" />
               </span>
@@ -180,12 +255,16 @@ function About() {
       {/* EXPERIENCE */}
       <Section
         eyebrow="// experience"
-        title={<>Selected <span className="serif-italic text-electric">work.</span></>}
+        title={
+          <>
+            Selected <span className="serif-italic text-electric">work.</span>
+          </>
+        }
         description="A few places I've built, taught, and managed."
       >
         <div className="grid gap-5 md:grid-cols-2">
           {experience.map((e) => (
-            <article key={e.org} className="rounded-3xl border border-rule bg-white p-7">
+            <article key={e.org} className="tech-card p-6 sm:p-7">
               <p className="eyebrow">{e.location ?? "online"}</p>
               <h3 className="mt-3 serif-display text-3xl text-ink">{e.role}</h3>
               <p className="mt-1 text-sm font-medium ink-soft">{e.org}</p>
@@ -215,9 +294,13 @@ function About() {
       <Section>
         <div className="rule-t flex flex-col items-start justify-between gap-6 pt-12 md:flex-row md:items-end">
           <h3 className="serif-display text-4xl text-ink sm:text-5xl">
-            Want to build something <span className="serif-italic text-electric">like this</span> for your business?
+            Want to build something <span className="serif-italic text-electric">like this</span>{" "}
+            for your business?
           </h3>
-          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper"
+          >
             Book a discovery call <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>

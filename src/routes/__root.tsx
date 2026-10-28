@@ -27,9 +27,14 @@ function NotFoundComponent() {
       <div className="max-w-md rounded-2xl border border-rule bg-white p-10 text-center shadow-sm">
         <p className="eyebrow">404 · signal lost</p>
         <h1 className="mt-3 serif-display text-6xl">Off the grid</h1>
-        <p className="mt-3 text-sm ink-soft">That route isn&apos;t here. Let&apos;s get you back.</p>
+        <p className="mt-3 text-sm ink-soft">
+          That route isn&apos;t here. Let&apos;s get you back.
+        </p>
         <div className="mt-6">
-          <Link to="/" className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:opacity-90">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:opacity-90"
+          >
             Return home
           </Link>
         </div>
@@ -53,12 +58,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-3 text-sm ink-soft">Refresh to reroute, or head home.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:opacity-90"
           >
             Try again
           </button>
-          <a href="/" className="rounded-full border border-rule px-5 py-2.5 text-sm font-medium hover:bg-surface">
+          <a
+            href="/"
+            className="rounded-full border border-rule px-5 py-2.5 text-sm font-medium hover:bg-surface"
+          >
             Go home
           </a>
         </div>
@@ -73,11 +84,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect" },
-      { name: "description", content: "Victor Otieno Ochieng — full stack engineer, AI systems builder and SaaS architect. Designing scalable digital systems for ambitious businesses across Africa and beyond." },
+      {
+        name: "description",
+        content:
+          "Victor Otieno Ochieng — full stack engineer, AI systems builder and SaaS architect. Designing scalable digital systems for ambitious businesses across Africa and beyond.",
+      },
       { name: "author", content: "Victor Otieno Ochieng" },
-      { name: "theme-color", content: "#fafbfc" },
-      { property: "og:title", content: "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect" },
-      { property: "og:description", content: "Designing scalable digital systems for ambitious businesses." },
+      { name: "theme-color", content: "#100f13" },
+      {
+        property: "og:title",
+        content: "Victor Otieno Ochieng — Full Stack Engineer & SaaS Architect",
+      },
+      {
+        property: "og:description",
+        content: "Designing scalable digital systems for ambitious businesses.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Victor Otieno Ochieng" },
       { property: "og:image", content: OG_IMAGE },
@@ -97,7 +118,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap",
+      },
     ],
     scripts: [
       {
@@ -111,10 +135,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           telephone: "+254742676542",
           image: OG_IMAGE,
           url: "/",
-          sameAs: [
-            "https://github.com/ochiengvicky21",
-            "https://www.tiktok.com/@v_o_otoday",
-          ],
+          sameAs: ["https://github.com/ochiengvicky21", "https://www.tiktok.com/@v_o_otoday"],
           address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" },
         }),
       },
@@ -144,7 +165,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen pt-5">
+      <div className="relative min-h-screen pt-3">
         <Navbar />
         <main className="relative z-10">
           <Outlet />
